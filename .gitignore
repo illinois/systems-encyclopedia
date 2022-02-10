@@ -1,0 +1,5 @@
+.parcel-cache/
+public/
+node_modules/
+.DS_Store
+.vscode

@@ -1,0 +1,59 @@
+body {
+  background-color: white;
+}
+
+footer {
+  color: hsla(13, 97%, 92%, 1);
+  font-size: 14px;
+  background-color: #DD3403;
+  border-top: dotted 1px white;
+}
+
+footer a {
+  color: white;
+}
+
+footer a:hover {
+  color: white;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
+h1, h2 {
+  color: #333;
+  font-weight: bold;
+  font-family: 'Archivo', sans-serif;
+}
+
+.content {
+  font-family: 'Archivo', sans-serif;
+  font-size: 18px;
+}
+
+
+.navbar {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.navbar-brand {
+  font-family: 'Share Tech Mono', monospace;  
+  font-weight: bold;
+  color: white !important;
+  line-height: 90%;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+header {
+  background-color: #DD3403;
+  border-bottom: dotted 1px #333;
+}
+
+.nav-item a {
+  color: white !important;
+}
+
+nav a {
+  color: hsla(222, 100%, 19%, 1) !important;  
+}
