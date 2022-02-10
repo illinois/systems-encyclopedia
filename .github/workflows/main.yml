@@ -38,5 +38,5 @@ jobs:
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
         
     - run: |
-        rsync -rtvzi ${{ github.workspace }}/public/ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}/dev
+        rsync -rtvzi ${{ github.workspace }}/public/ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}
         
