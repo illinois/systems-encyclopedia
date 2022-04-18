@@ -98,7 +98,6 @@ db.\<collection\>.deleteOne({<filter\>}) - Deletes first document that matches t
 ```console
 > db.fish.deleteOne({"name":"nemo"})
 > db.fish.find({"name":"nemo"})
-
 >
 ```
 db.\<collection\>.deleteMany({<filter\>}) - Deletes all documents that match that filter
@@ -177,7 +176,6 @@ A container that holds documents. For those familiar with SQL databases, this is
 The actual data. This will be essentially a BSON file (in python a dictionary basically). 
 
 ### Unstructured Data
-- https://www.knowi.com/blog/mongodb-vs-sql/
 
 MongoDB mostly differs from SQL databases in its allowance of a lack of structure. SQL databases are stored in a table (with rows as specific thing, and columns as the attributes of that thing), so they must conform to the schema that the table (in Mongo "collection") requires. This is fantastic for data that will always be in a defined structure, and this is safer and makes it easier to search for. However, that severely limits our freedom. [80-90\%](https://www.mongodb.com/unstructured-data) of data is unstructured, including email, documents, and many other communication methods. If we are willing to accept the tradeoffs, why shouldn't we be allowed to put any form of data into databases easily. 
 
