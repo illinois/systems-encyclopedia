@@ -182,7 +182,7 @@ MongoDB mostly differs from SQL databases in its allowance of a lack of structur
 ### [Indexing](https://www.digitalocean.com/community/tutorials/how-to-use-indexes-in-mongodb)
 Suppose we know we will search for certain pieces of data that match a pattern a lot and don't want overhead of traversing entire collection every time. We can create indexes of certain values like this:
 ```console
-> db.fish({"age":-1})
+> db.fish.createIndex({"age":-1})
 ```
 This will help speed up future searches. Instead of doing a blind search through the collection, the index will store their ages in the order specified so the find operation will be faster. The cost of this is that more indexes require more memory, so only make indexes that are useful. 
 
