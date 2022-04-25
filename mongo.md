@@ -3,15 +3,14 @@
 
 ## One Hour Until Deadline Explanation
 
-MongoDB is one of the more widely-used non-relational (NOSQL) databases. It relies on a document-oriented model, which is a hierarchal system of database -> collection -> document. This allows the database to store unstructured data. Mongo stores data in a  binary version of JSON called [BSON](https://www.mongodb.com/basics/bson), which makes it very nice to work with.  
+MongoDB is one of the more widely used non-relational (NOSQL) databases. It relies on a document-oriented model, which is a hierarchal system of database -> collection -> document. This allows the database to store unstructured data. Mongo stores data in a  binary version of JSON called [BSON](https://www.mongodb.com/basics/bson), which makes it very nice to work with.  
 
 
 ## Installation
 https://www.mongodb.com/docs/guides/server/install/
 
 ## Ways to interface
-This entry will show you how to use the mongo command line interface. However, there are many other ways. 
-[Mongo compass](https://www.mongodb.com/docs/compass/current/#std-label-compass-index) is an excellent GUI tool that allows for vizualizing the data among other features. 
+This entry will show you how to use the mongo command line interface. However, there are many other ways to use MongoDB. [MongoDB Compass](https://www.mongodb.com/docs/compass/current/#std-label-compass-index) is an excellent GUI tool that allows for vizualizing the data among other features. 
 In addition MongoDB supports many other [programming languages](https://www.mongodb.com/docs/drivers/?_ga=2.112255489.424296623.1650216162-707208841.1646288068) including [c](https://www.mongodb.com/docs/drivers/c/), [c++](https://www.mongodb.com/docs/drivers/cxx/), [c#](https://www.mongodb.com/docs/drivers/csharp/), [java](https://www.mongodb.com/docs/drivers/java-drivers/), [nodejs](https://www.mongodb.com/docs/drivers/node/current/), [python](https://www.mongodb.com/docs/drivers/pymongo/), and many others either through official or community supported libraries. 
 
 ## Usage
@@ -102,6 +101,9 @@ db.\<collection\>.deleteOne({<filter\>}) - Deletes first document that matches t
 ```
 db.\<collection\>.deleteMany({<filter\>}) - Deletes all documents that match that filter
 ```console
+> db.fish.find({"name":"jennifer"})
+{ "_id" : ObjectId("6266ccab8043baa2ef94ce8a"), "name" : "jennifer", "type" : "swordfish" }
+{ "_id" : ObjectId("6266ccbd8043baa2ef94ce8b"), "name" : "jennifer", "type" : "swordfish", "age" : 3, "isOrange" : false, "traits" : [ "pretty chill", "likes anime and hiking" ] }
 > db.fish.deleteMany({"name":"jennifer"})
 > db.fish.find({"name":"jennifer"})
 >
@@ -110,9 +112,13 @@ db.\<collection\>.deleteMany({<filter\>}) - Deletes all documents that match tha
 Many commands have certain optional paramaters. They are placed into the command in one large document called options. Here is a brief explanation on what they mean. 
 ### Insert Options
 
-[ordered](https://self-learning-java-tutorial.blogspot.com/2021/06/mongodb-ordered-and-unordered-inserts.html) (only in insertMany()) - boolean - default is true - Decides whether data is put into the collection in an ordered or unordered way when we run insertMany(). Ordered inserts take more time. In addition if an error occurs they will stop, which may be useful depending on use case. 
+**[ordered](https://self-learning-java-tutorial.blogspot.com/2021/06/mongodb-ordered-and-unordered-inserts.html)** - *(only in insertMany())* - *boolean* - *default is true* : 
 
-[writeConcern](https://www.mongodb.com/docs/manual/reference/write-concern/) - default is usually majority unless overwritten - This is the parameter to decide which writes get aknowledeged. This is relevant where we have [replica sets](#replica-sets), which means there are multiple nodes with the data.
+Decides whether data is put into the collection in an ordered or unordered way when we run insertMany(). Ordered inserts take more time. In addition if an error occurs they will stop, which may be useful depending on use case. 
+
+**[writeConcern](https://www.mongodb.com/docs/manual/reference/write-concern/)** - *default is usually majority unless overwritten* : 
+
+This is the parameter to decide which writes get aknowledeged. This is relevant where we have [replica sets](#replica-sets), which means there are multiple nodes with the data.
 
 Options for writeConcern:
 
@@ -129,15 +135,22 @@ w:n - at least n nodes including the primary node have acknowledge the write.
 There is also a [j](https://www.mongodb.com/docs/manual/reference/write-concern/#j-option) option to confirm that write was written onto on-disk journal. 
 
 ### Find Options
-[projection](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#std-label-method-find-projection) - document - default is every field -
+**[projection](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#std-label-method-find-projection)** - *document* - *default is every field* :
+
 Determines fields that are returned to user when queried. Used if we only need specific fields in document. 
 
 ### Update Options
-upsert - boolean - default is false - Will write new document with specified filter if document is not found during query.
+**upsert** - *boolean* - *default is false* : 
 
-writeConcern - document - default is default write concern - Specifies [write concern](https://www.mongodb.com/docs/manual/reference/write-concern/).
+Will write new document with specified filter if document is not found during query.
 
-collation - document - default is collection default collation if it has one, otherwise query must exactly match in spelling - Tells us what spelling we should approve of during query. For example default query may pass over capital case word perhaps undesirably. This is what collation document looks like: 
+**writeConcern** - *document* - *default is default write concern* :
+
+Specifies [write concern](https://www.mongodb.com/docs/manual/reference/write-concern/).
+
+**collation** - *document* - *default is collection default collation if it has one, otherwise query must exactly match in spelling* :
+
+Tells us what spelling we should approve of during query. For example default query may pass over capital case word perhaps undesirably. This is what collation document looks like: 
 ```json
 collation: {
    locale: <string>,
@@ -151,13 +164,19 @@ collation: {
 }
 ```
 
-arrayFilters - document - Input all of the potential filters you would like to use. 
+**arrayFilters** - *document* :
 
-[hint](https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany/#std-label-update-many-hint) - Allows you to use hint. 
+Input all of the potential filters you would like to use. 
+
+**[hint](https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany/#std-label-update-many-hint)** :
+
+Allows you to use hint. 
 
 ### Querying
 
-[query operators](https://www.mongodb.com/docs/manual/reference/operator/query/#std-label-query-selectors) - When we are making a query, we have the option to either search for the desired filter exactly, or use an operator to search for the filter. Suppose we have a collection document ({"bottles":99, "onWall":true}). We can find it by using db.wall.find("bottles":99). Or we can use db.wall.find("bottles":{"$gte: 98}). This represent all the documents that are greater than or equal to 98 bottles, which allows us to make much more flexible queries. We can do similar things with $or, $and, $regex, and many other features that are shown in their [documentation](https://www.mongodb.com/docs/manual/reference/operator/query/#std-label-query-selectors). We can even make custom [javascript](https://www.mongodb.com/docs/manual/reference/operator/query/where/) functions for querying.  
+**[query operators](https://www.mongodb.com/docs/manual/reference/operator/query/#std-label-query-selectors)** :
+
+When we are making a query, we have the option to either search for the desired filter exactly, or use an operator to search for the filter. Suppose we have a document ({"bottles":99, "onWall":true}). We can find it by using db.wall.find("bottles":99). Or we can use db.wall.find({"bottles":{$gte: 98}}). This represent all the documents that are greater than or equal to 98 bottles, which allows us to make much more flexible queries. We can do similar things with $or, $and, $regex, and many other features that are shown in their [documentation](https://www.mongodb.com/docs/manual/reference/operator/query/#std-label-query-selectors). We can even make custom [javascript](https://www.mongodb.com/docs/manual/reference/operator/query/where/) functions for querying.  
 
 ## General Overview:
 MongoDB allows users as every database does to store and obtain data. However, it has several features that make it different than the typical relational database. 
@@ -201,7 +220,7 @@ When using any database, it is essential that we don't lose our data. Imagine a 
 Suppose the primary node was hacked. The beauty of this system is that you are not doomed, because other nodes with the data exist. The nodes than stage an election, where they decide on the future primary node. Elections can be triggered for a variety of reasons, including the addition of a new node or not being able to communicate with the node for a predefined period of time. 
 
 ### No CAP
-Relational databases are named after their ability to link between tables by using keys safely. In MongoDB we cannot do this, because there is no guarentee that the unstructured data in collection A has what collection B wants to link with, because the collections have no innate attributes. A side effect of this is we can no longer use ACID (Atomicity, Consistency, Isolation, and Durabiility). There is no way to ensure that a document will have an attribute, so the transactions are not guarenteed to work out. However, as database fans seem to be acronym lovers, we have a new acronym that is relevant for non-relational databases: [CAP](https://www.instaclustr.com/blog/cassandra-vs-mongodb/) (Consistency, Availablity, and Partition Tolerance). On a non-distributed system this is not an issue, but MongoDB databases can be quite large and spread out over multiple nodes. Partition is the ability to not fail if one node goes down, which MongoDB can do. The tradeoff required for non-relational databases according to [CAP's theorem](https://en.wikipedia.org/wiki/CAP_theorem) is either availability or consistency. [Cassandra](https://cassandra.apache.org/_/index.html) focusses on availability, which concerns making sure that a request when the network is down will provide a result, even if it is not the newest. MongoDB cannot promise this. What MongoDB can promise unlike Cassandra is consistency. As soon as I write something, I do not have to worry about a future query returing the old value. This ensures that all requests will go the way I'm intending. The cost is that the most recent data on a system may be an error.
+Relational databases are named after their ability to link between tables by using keys safely. In MongoDB we cannot do this, because there is no guarentee that the unstructured data in collection A has what collection B wants to link with, because the collections have no innate attributes. A side effect of this is we can no longer use [ACID](https://en.wikipedia.org/wiki/ACID) (Atomicity, Consistency, Isolation, and Durabiility). There is no way to ensure that a document will have an attribute, so the transactions are not guarenteed to work out. However, as database fans seem to be acronym lovers, we have a new acronym that is relevant for non-relational databases: [CAP](https://www.instaclustr.com/blog/cassandra-vs-mongodb/) (Consistency, Availablity, and Partition Tolerance). On a non-distributed system this is not an issue, but MongoDB databases can be quite large and spread out over multiple nodes. Partition is the ability to not fail if one node goes down, which MongoDB can do. The main tradeoff required for non-relational databases according to [CAP's theorem](https://en.wikipedia.org/wiki/CAP_theorem) is either availability or consistency. [Cassandra](https://cassandra.apache.org/_/index.html) focusses on availability, which concerns making sure that a request when the network is down will provide a result, even if it is not the newest. MongoDB cannot promise this. What MongoDB can promise unlike Cassandra is consistency. As soon as I write something, I do not have to worry about a future query returing the old value. This ensures that all requests will go the way I'm intending. The cost is that the most recent data on a system may be an error.
 However, we can adjust MongoDB's consistency and availability, we just cannot have both. 
 
 ## Sources:
