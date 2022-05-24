@@ -1,5 +1,5 @@
 
-{%- set canonical = "https://vis.cs.illinois.edu" + page.url -%}
+{%- set canonical = "https://systems-encyclopedia.cs.illinois.edu" + page.url -%}
 {%- if not title -%}
   {%- set title = site.meta.title -%}
 {%- else -%}
@@ -10,14 +10,13 @@
   {%- set description = site.meta.description -%}
 {%- endif -%}
 
-{%- set pageImg = "https://vis.cs.illinois.edu/static/default.png" -%}
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
-<link rel="icon" type="image/svg+xml" href="/static/discovery.svg">
+<link rel="icon" type="image/png" href="/static/favicon.png">
+
 <link rel="canonical" href="{{canonical}}" />
 
 {% block og %}
@@ -25,7 +24,7 @@
 <meta property="og:title" content="{{ title }}" />
 <meta property="og:description" content="{{ description }}" />
 <meta property="og:url" content="{{ canonical }}" />
-<meta property="og:site_name" content="Data Science Discovery" />
+<meta property="og:site_name" content="Systems Encyclopedia" />
 {% if pageImg %}
 <meta property="og:image" content="{{ pageImg }}" />
 {% endif %}
@@ -34,8 +33,8 @@
 {% block twitter %}
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ description }}">
-<meta name="twitter:site" content="@DataScienceDuo">
-<meta name="twitter:creator" content="@DataScienceDuo">
+<meta name="twitter:site" content="@profwade_">
+<meta name="twitter:creator" content="@profwade_">
 {% if pageImg %}
 <meta name="twitter:image" content="{{ pageImg }}">
 {% endif %}
