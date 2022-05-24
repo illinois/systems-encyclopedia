@@ -3,10 +3,6 @@
     {
       "name": "Home",
       "url": "/"
-    },
-    {
-      "name": "Encyclopedia Index",
-      "url": "/all/"
     }
   ]
 }

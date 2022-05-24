@@ -1,14 +1,14 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css" integrity="sha512-bd1K4DEquIavX49RSZHIE0Ye6RFOVlGLhtGow9KDbLYqOd/ufhshkP0GoJoVR1jqj7FmOffvVIKuq1tcXlN9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 # Bit Fields
 <hr>
 
-In C and C++, the smallest primitive types consist of a single byte that can store 256 (2^8) unique values.
-However, you may encounter situations where even 256 far exceeds the number of values you need to represent with a variable.
-One of the most common of these situations arises when you have a `struct` or `class` that contains several boolean variables, which only have 2 meaningful values (`true` or `false`).
+In C and C++, the smallest primitive types consist of a single byte that can store 256 (2^8) unique values. However, you may encounter situations where even 256 far exceeds the number of values you need to represent with a variable. One of the most common of these situations arises when you have a `struct` or `class` that contains several boolean variables, which only have 2 meaningful values (`true` or `false`).
 
 Suppose we an `animal` struct wherein each animal has a name and possesses some combination of attributes.
 One way we might represent such an animal is as follows:
 
-```c++
+```cpp
   typedef struct _animal {
     const char* name;  //our name
     bool quadruped = false; //whether we have four lege
@@ -25,7 +25,7 @@ One way we might represent such an animal is as follows:
 
 Now suppose we wish to create a new `animal` using some combination of the above attributes. We might set these attributes directly when creating the animal, one-by-one after creating the animal, or through a helper function:
 
-```c++
+```cpp
   // direct
   animal a = {"cat",true,false,false,false,false,true,false,true};
 
@@ -60,7 +60,7 @@ The one-by-one method is cleaner and more explicit than the other methods, but s
 
 Finally, suppose we want to determine whether a given `animal` shares the same attributes as a refernce `animal`. We could accomplish this with a series of `if` statements, as follows:
 
-```c++
+```cpp
   //8 if statements and up to 8 comparisons
   bool isACat(animal &a) {
     if (a.quadruped) {
@@ -86,7 +86,7 @@ Finally, suppose we want to determine whether a given `animal` shares the same a
 
 The above code is very cumbersome. The code could be made much more readable using boolean logical operators, but ultimately we may still end up performing up to 8 comparisons in the worst case:
 
-```c++
+```cpp
   //looks much cleaner, but still performing up to 8 comparisons
   bool isACat(animal &a) {
     return a.quadruped
@@ -108,7 +108,7 @@ A **bit field** is a data structure used to address and manipulate individual bi
 
 By using bit fields, we are able to solve several of the issues identified in the above section. To begin, we must first define one or more **bit masks**, which are variables in which a single bit is set and the rest are unset. We will need a separate bitmask for each boolean variable we wish to represent in our bit field. For our `animal` `struct`, our bit masks might look something like this:
 
-```c++
+```cpp
   const char quadruped = 0b10000000; //whether we have four lege
   const char tail      = 0b01000000; //whether we have a tail
   const char shell     = 0b00100000; //whether we have a shell
@@ -123,7 +123,7 @@ By using bit fields, we are able to solve several of the issues identified in th
 While we use `chars` above to describe each bit mask, larger bitfields might use 16-bit, 32-bit, or 64-bit data types when working with larger bitfields.
 Using the above bitmasks, we can greatly simplify the fields in our `animal` `struct`:
 
-```c++
+```cpp
   typedef struct _animal {
     const char* name;      //our name
     char        stats = 0; //our attributes
@@ -133,7 +133,7 @@ Using the above bitmasks, we can greatly simplify the fields in our `animal` `st
 
 Note that the previous `bool` variables have been replaced by a single `char` we have named `stats`. We will be accessing the 8 individual bits of this variable to accomplish what we previously accomplished using 8 separate boolean values. Continuing our rewrite of our code in the first section, we are able to reimplment our three techniques for creating an `animal` as follows:
 
-```c++
+```cpp
   // direct
   animal a = {"cat",tail|fast|quadruped|audible};
 
@@ -160,7 +160,7 @@ Moreover, the one-by-one method now looks very similar to the direct method, but
 
 Perhaps the most noticeable improvement comes from our `isACat()` function. While we previously required up to 8 separate comparisons to determine whether an `animal` matched a reference `animal`, we can now rewrite our function using a single comparison!
 
-```c++
+```cpp
   bool isACat(animal &a) {
     const char CATSTATS = quadruped|tail|fast|audible;
     return a.stats == CATSTATS;
@@ -181,7 +181,7 @@ Voila! Through the magic of bit fields, we have rewrriten our `isACat()` functio
 
 ## Reference sheet for some common bit field usages
 
-```c++
+```c
 
   uint8_t FLAGS = 0b10101001;  //can also be uint16_t, uint32_t, or uint64_t
   uint8_t foo   = 0b00010111;  //can also be uint16_t, uint32_t, or uint64_t

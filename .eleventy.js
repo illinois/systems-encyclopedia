@@ -81,10 +81,8 @@ module.exports = function(eleventyConfig) {
     return slugify(content, slugify_opts);
   });
 
-  eleventyConfig.addShortcode("include_relative", function (relPath) {
-    let dir = path.dirname(this.page.inputPath);
-    let fulLPath = path.join(dir, relPath);
-    return `<div>${fs.readFileSync(fulLPath)}</div>`;
+  eleventyConfig.addPairedShortcode("output", function(content) {
+    return `<pre class="code-output-block">${content}</pre>`;
   });
 
   return eleventyConfig

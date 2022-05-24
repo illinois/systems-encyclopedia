@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: #f8f8fb;
 }
 
 footer {
@@ -17,8 +17,7 @@ footer a:hover {
   color: white;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
-
+/*
 h1, h2 {
   color: #333;
   font-weight: bold;
@@ -28,6 +27,36 @@ h1, h2 {
 .content {
   font-family: 'Archivo', sans-serif;
   font-size: 18px;
+}
+*/
+.code-output-block {
+  border: dotted 1px #666;
+  background-color: white;
+  padding: 10px 20px;
+}
+
+h1, h2 {
+  color: #333;
+  font-weight: bold;
+  font-family: 'Archivo', serif;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+h2 {
+  font-size: 36px;
+  margin-top: 30px;
+}
+
+.content {
+  font-family: 'Archivo', sans-serif;
+  font-size: 18px;
+}
+
+.content a {
+  color: #DD3403;
 }
 
 
