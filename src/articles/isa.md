@@ -20,11 +20,13 @@ The **instruction set architecture** (ISA) of any computer processor is a specif
 - Define what registers a processor has and what the purpose of each register is.
 - Specify the size, location, and type of any inputs to a particular instruction.
 
-The most popular ISAs currently are [x86](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x86-architecture) and [ARM](https://en.wikipedia.org/wiki/ARM_architecture_family), although open-source ISA specifications like [RISC-V](https://en.wikipedia.org/wiki/RISC-V) are increasingly gaining wider adoption.
+ISA's have a large number of consequences even for the modern programmer. Differences between ISAs massively affect the portability of programs between systems, and compiler designers for languages that compile to assembly have to write varying implementations for different architectures. The most popular ISAs currently are [x86](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x86-architecture) and [ARM](https://en.wikipedia.org/wiki/ARM_architecture_family), although open-source ISA specifications like [RISC-V](https://en.wikipedia.org/wiki/RISC-V) are increasingly gaining wider adoption.
 
 ## Instructions and instruction sets
 
-The core of any ISA is its **instruction set**, or the set of commands that any machine implementing the ISA can accept.Every instruction typically features an **opcode**, a unique numerical identifier that allows a processer to determine which instruction is used when it reads machine code, and a **mnemonic**, or a short abbreviation of the instruction (e.g. `ADD`, `SUB`, `MOV`) that is used to specify instructions in [assembly code](../assembly). Instructions will vary in structure and size depending on the ISA and the type of instruction, and the syntax of every instruction (in both machine and assembly code) is specified by the ISA. For a canonical example of a how instructions work, let's consider a simple x86 assembly program that adds two numbers:
+The core of any ISA is its **instruction set**, or the set of commands that any machine implementing the ISA can accept.At their core, **instructions** are a structured string of binary that is fed to the CPU, telling it which instructions to execute. For each instruction, an ISA typically specifies an **opcode**, a unique numerical identifier that allows a processer to determine which instruction is used when it reads machine code, and a **mnemonic**, or a short abbreviation of the instruction (e.g. `ADD`, `SUB`, `MOV`) that is used to specify instructions in [assembly code](../assembly). 
+
+Instructions will vary in structure and size depending on the ISA and the type of instruction, and the syntax of every instruction (in both machine and assembly code) is specified by the ISA. For a canonical example of a how instructions work, let's consider a simple x86 assembly program that adds two numbers:
 
 ```nasm
 mov     eax, 14 ; put the value `14` into register eax
@@ -32,9 +34,14 @@ mov     ebx, 10 ; put the value `10` into register ebx
 add     eax, ebx ; add the values that exist inside eax and ebx
 ```
 
-Instructions also have structure when they are written in machine code. Consider MIPS32's `addi` instruction written in machine code[^1]:
+The structure of instructions in machine code is also analogous to machine code (which is why assembly is frequently used as an intermediate language). Consider MIPS32's `addi` instruction written in machine code as an example[^1]:
 
 ![img](../static/isa/mips32instruction.png)
+
+From both examples, we can gather a few things about what instructions do:
+- Instructions typically have very minimal functionalities -- mimicking a simple equivalent program in a high-level programming language already takes three times as many lines.
+- Instructions typically involve the movement and modification of data that exists in the CPU's registers. Unlike high-level languages, no forms of memory management can be abstracted away.
+- Each instruction is structured much like a function in a high-level computer program -- every instruction defines a certain set of parameters, meaning that the format of every instruction (both in machine code and assembly) is non-uniform.
 
 ## Approaches to ISAs -- RISC and CISC
 
@@ -43,7 +50,7 @@ Instructions also have structure when they are written in machine code. Consider
 <table style="text-align:center">
   <tr><th>RISC</th><th>CISC</th></tr>
   <tr><td>Instructions are always 32 bits long, making [instruction pipelining](https://cs.stanford.edu/people/eroberts/courses/soco/projects/risc/pipelining/index.html) possible</td><td>Instructions are variable length</td></tr>
-  <tr><td>Much longer and less readable assembly -- less instructions increases code size</td><td>Large set of instructions leads to smaller and less complicated assembly code</td></tr>
+  <tr><td>Much longer and less readable assembly -- less instructions increases assembly code size</td><td>Large set of instructions leads to smaller and less complicated assembly code</td></tr>
   <tr><td>Higher upper bound on number of general purpose registers since less hardware space is dedicated to complex instructions</td><td>Lower upper bound on general-purpose registers</td></tr>
 </table>
 
