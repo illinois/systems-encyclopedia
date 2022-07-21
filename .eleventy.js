@@ -37,6 +37,7 @@ module.exports = function(eleventyConfig) {
     'csv',
     'html',
     'css',
+    'gif',
     // 'svg',
     // 'liquid',
     // 'pug',
