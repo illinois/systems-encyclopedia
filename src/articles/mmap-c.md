@@ -44,13 +44,13 @@ The `mmap` interface is explicit in defining parameters for both file I/O and sh
 
 Many programmers are already familiar with the `open`-`read`-`write`-`close` mnemonic, where a program will open a file descriptor for some file, read the contents of the file via a buffer, perform some operations on that buffer, write the buffer to the file system, then close the underlying file descriptor.
 
-- `mmap` can very easily load large files compared to standard file I/O because it uses a system of **demand paging**. In demand paging, any  Because `mmap` works so well for large memory allocations, `malloc` actually uses `mmap` under the hood in those cases as well.
+- `mmap` can very easily load large files compared to standard file I/O because it uses a system of **demand paging**. In demand paging, the entirety of the mapping is not loaded into memory, but the underlying memory pages composing the mapping are fetched on an as-needed basis by the operating system. This means that large mappings will not necessarily consume large amounts of memory. Because `mmap` works so well for large memory allocations, `malloc` actually uses `mmap` under the hood in those cases as well.
 - Modern implementations of `mmap` typically use **copy-on-write** loading (also known as lazy loading) for maps with the `MAP_PRIVATE` flag. In a copy-on-write system, multiple processes accessing the same resource will instead receive a pointer to a single resource until they decide to make a change to that resource, at which point the mapping is copied to the program's memory. In practice, this means `mmap` saves significant amounts of memory for applications where multiple processes are attempting to read the same file at one time.
 - Since `mmap` involves making a single syscall, it has slightly less overhead than the `read`-`write`-`close` mnemonic. In most use cases this should not make a noticeable performance difference, but it is worth noting in cases where the `open`-`read`-`write`-`close` mnemonic is used many times in a single program.
 
 That said, `mmap` is not a one-size-fits-all solution to file I/O, and there are plenty of sound reasons to prefer the `read`/`write` mnemonic:
 - When used for memory allocation, `mmap` allocates to the nearest page of data, meaning that at a minimum every `mmap` call will be calling for 4 KiB (4096 bytes) of data. This is inefficient for small pieces of data -- consider that if a page was mapped for a single 4 byte integer, 4092 bytes of the page would be left unused.
-- 
+- Page faults caused by `mmap` memory accesses are *slow*. There are many cases where `mmap` is not a viable option due to efficiency concerns.
 
 ## Some examples
 
