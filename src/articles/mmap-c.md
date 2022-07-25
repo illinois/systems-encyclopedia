@@ -6,21 +6,19 @@
 
 ## Overview of `mmap`
 
-### So how does `mmap` actually work?
+### What does `mmap` actually do?
 
-When a program makes a syscall to `mmap`, the kernel will designate a section of that program's memory to map to the memory of some underlying resource. Put simply, we can think of this as each memory address in the program being set to point to another address in that underlying resource:
+**NOTE: `mmap` is much easier to understand for readers that have a working knowledge of [virtual memory](../virtual-memory) and [paging](../paging). We recommend that readers who are not familiar read up about those topics before continuing.**
+
+Every program in Unix-like consists of a virtual address space which is composed of a series of regions of virtual memory, each backed by a specific resource. This resource can either be physical memory, a file, or nothing at all. For example, the "heap" governed by `malloc()` in C (backed by physical memory) is one of these regions. When a program makes a syscall to `mmap`, the kernel will section off a new region of virtual memory and bind that region to map to the memory of some underlying resource. When it performs a "map" it sets every memory address to point to the memory of that underlying resource:
 
 ![img](../mmap-diagram.png)
 
-In the case of `mmap`, the operating system establishes 
-
-### Why can `mmap` allocate such a large amount memory?
-
-### Why 
+New virtual memories created by mappings are able to be manipulated in whichever way the program wants to, and are typically separated into two categories, **anonymous** mappings and **file-backed** mappings. In anonymous mappings, the new memory region is backed by an anonymous virtual file (i.e. a file that is not named in the OS), and are kind of equivalent to asking the OS for memory with `malloc()`. File-backed mappings are backed by a physical file on the operating system that contains some data, and each memory address in the mapping is set to point to a memory address that exists in that file. Practically speaking, this means that `mmap` can be used to manipulate files (since in a file-backed mapping the underlying memory addresses of the file are mapped to the memory of a program) and to create shared memory (since multiple processes can agree to point to the same underlying resource).
 
 ## The `mmap` specification
 
-The `glibc` specification for the `mmap` function is as follows:
+The POSIX specification for the `mmap` function is as follows:
 
 ```c
  void *mmap(void *addr, size_t length, int prot, int flags,
@@ -46,12 +44,12 @@ The `mmap` interface is explicit in defining parameters for both file I/O and sh
 
 Many programmers are already familiar with the `open`-`read`-`write`-`close` mnemonic, where a program will open a file descriptor for some file, read the contents of the file via a buffer, perform some operations on that buffer, write the buffer to the file system, then close the underlying file descriptor.
 
-- `mmap` can very easily load large files compared to standard file I/O
+- `mmap` can very easily load large files compared to standard file I/O because it uses a system of **demand paging**. In demand paging, any  Because `mmap` works so well for large memory allocations, `malloc` actually uses `mmap` under the hood in those cases as well.
 - Modern implementations of `mmap` typically use **copy-on-write** loading (also known as lazy loading) for maps with the `MAP_PRIVATE` flag. In a copy-on-write system, multiple processes accessing the same resource will instead receive a pointer to a single resource until they decide to make a change to that resource, at which point the mapping is copied to the program's memory. In practice, this means `mmap` saves significant amounts of memory for applications where multiple processes are attempting to read the same file at one time.
 - Since `mmap` involves making a single syscall, it has slightly less overhead than the `read`-`write`-`close` mnemonic. In most use cases this should not make a noticeable performance difference, but it is worth noting in cases where the `open`-`read`-`write`-`close` mnemonic is used many times in a single program.
 
-That said, `mmap` is not a one-size-fits-all solution to file I/O and there are plenty of sound reasons to prefer the `read`/`write` mnemonic:
-- `mmap` allocates memory in pages rather than in bytes, so
+That said, `mmap` is not a one-size-fits-all solution to file I/O, and there are plenty of sound reasons to prefer the `read`/`write` mnemonic:
+- When used for memory allocation, `mmap` allocates to the nearest page of data, meaning that at a minimum every `mmap` call will be calling for 4 KiB (4096 bytes) of data. This is inefficient for small pieces of data -- consider that if a page was mapped for a single 4 byte integer, 4092 bytes of the page would be left unused.
 - 
 
 ## Some examples
