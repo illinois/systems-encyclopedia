@@ -1,5 +1,8 @@
 ---
 title: Character Encoding
+
+authors:
+- waf
 ---
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css" integrity="sha512-bd1K4DEquIavX49RSZHIE0Ye6RFOVlGLhtGow9KDbLYqOd/ufhshkP0GoJoVR1jqj7FmOffvVIKuq1tcXlN9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -142,15 +145,5 @@ The full code page for ASCII is reproduced below:
     <td><abbr title="0x0d, Carriage Return, \r">CR</abbr><div>Carriage Return, <code>\r</code></td>
     <td><abbr title="0x0e, Shift Out">SO</abbr></td>
     <td><abbr title="0x0f, Shift In">SI</abbr></td>
-  <tr>
-    <th>0x_1</th>
-    <td>SOH</td>
-    <td>DC1</td>
-    <td>!</td>
-    <td>1</td>
-    <td>A</td>
-    <td>Q</td>
-    <td>a</td>
-    <td>q</td>
   </tr>
 </table>

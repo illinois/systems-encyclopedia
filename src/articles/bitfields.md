@@ -1,5 +1,9 @@
 ---
 title: Bit Fields
+
+authors:
+- Patrick Crain
+- waf
 ---
 
 
