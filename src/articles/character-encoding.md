@@ -1,5 +1,8 @@
 ---
 title: Character Encoding
+
+authors:
+- waf
 ---
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css" integrity="sha512-bd1K4DEquIavX49RSZHIE0Ye6RFOVlGLhtGow9KDbLYqOd/ufhshkP0GoJoVR1jqj7FmOffvVIKuq1tcXlN9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,6 +29,8 @@ A
 A
 Illinois
 {% endoutput %}
+
+<div style="background-color: hsla(13, 97%, 97%, 1); border: dashed 1px #DD3403; border-left: solid 6px #DD3403; padding-left: 10px;">
 
 ## Explore Character Encoding Yourself
 
@@ -60,7 +65,7 @@ let input_code_point_change = () => {
 };
 </script>
 
-Write anything (including emojis!) into this text box and we'll display the code points for your text:
+Write anything (including emojis!) into this text box and we'll display the ASCII and Unicode/UTF-8 code points for your text:
 
 <table>
   <tr>
@@ -80,7 +85,7 @@ Write anything (including emojis!) into this text box and we'll display the code
   </tr>
 </table>
 
- 
+ </div>
 
  
 
@@ -96,41 +101,49 @@ As the first widely adopted character encoding, the ASCII encoding has become th
 
 The full code page for ASCII is reproduced below:
 
-<table class="table table-striped" style="background-color: white; border: solid 1px #bbb;">
+<style>
+.se-ascii-table td div {
+  margin-top: -5px; font-size: 11px;
+}
+</style>
+
+<table class="table table-striped se-ascii-table" style="text-align: center; background-color: white; border: solid 1px #bbb;">
   <tr>
     <th></th>
-    <th>
-      0x0_<br>
-      0000 ____
-    </th>
-    <th>0x1_</th>
-    <th>0x2_</th>
-    <th>0x3_</th>
-    <th>0x4_</th>
-    <th>0x5_</th>
-    <th>0x6_</th>
-    <th>0x7_</th>
+    <th><code>0b_000</code></th>
+    <th><code>0b_001</code></th>
+    <th><code>0b_010</code></th>
+    <th><code>0b_011</code></th>
+    <th><code>0b_100</code></th>
+    <th><code>0b_101</code></th>
+    <th><code>0x_110</code></th>
+    <th><code>0x_111</code></th>
   </tr>
   <tr>
-    <th>0x_0</th>
-    <td>NUL</td>
-    <td>DLE</td>
-    <td>SP</td>
-    <td>0</td>
-    <td>@</td>
-    <td>P</td>
-    <td>`</td>
-    <td>p</td>
+    <td colspan="9">
+      The first 32 code points (<code>0x00 - 0x1f</code>) are referred to as &quot;Control Characters&quot;.  They have no printable representation.  Instead, these characters used for text, program, and device control.
+    </td>
   </tr>
   <tr>
-    <th>0x_1</th>
-    <td>SOH</td>
-    <td>DC1</td>
-    <td>!</td>
-    <td>1</td>
-    <td>A</td>
-    <td>Q</td>
-    <td>a</td>
-    <td>q</td>
+    <th><code>0b0000_</code></th>
+    <td><abbr title="0x00, NULL byte, \0">NUL</abbr><div>NULL character, <code>\0</code></div></td>
+    <td><abbr title="0x01, Start of Heading">SOH</abbr></td>
+    <td><abbr title="0x02, Start of Text">STX</abbr></td>
+    <td><abbr title="0x03, End of Text">ETX</abbr></td>
+    <td><abbr title="0x04, End of Transmission">EOT</abbr></td>
+    <td><abbr title="0x05, Enquiry">ENQ</abbr></td>
+    <td><abbr title="0x06, Acknowledgment">ACK</abbr></td>
+    <td><abbr title="0x07, Bell, \b">BEL</abbr><div>Bell, <code>\a</code></div></td>
+  </tr>
+  <tr>
+    <th><code>0b0001_</code></th>
+    <td><abbr title="0x08, Back Space, \b">BS</abbr><div>Backspace, <code>\b</code></div></td>
+    <td><abbr title="0x09, Horizontal Tab, \t">HT</abbr><div>Tab, <code>\t</code></div></td>
+    <td><abbr title="0x0a, Line Feed, \n">LF</abbr><div>Line Feed, <code>\n</code></div></td>
+    <td><abbr title="0x0b, Vertical Tab, \v">VT</abbr><div>Vertical Tab, <code>\v</code></td>
+    <td><abbr title="0x0c, Form Feed, \f">FF</abbr><div>Form Feed, <code>\f</code></td>
+    <td><abbr title="0x0d, Carriage Return, \r">CR</abbr><div>Carriage Return, <code>\r</code></td>
+    <td><abbr title="0x0e, Shift Out">SO</abbr></td>
+    <td><abbr title="0x0f, Shift In">SI</abbr></td>
   </tr>
 </table>
