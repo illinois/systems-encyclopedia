@@ -79,7 +79,7 @@ Finally, create a `cs340` directory on your Desktop.
 
 ### Linux
 
-On Linux, setting up your environment should work, so long as you have the required tools installed.  If you'er running Linux, we trust you know how to get packages as you need them. :)
+On Linux, setting up your environment should be as simple as installing the required packages for C development on your distribution. If you're running Linux, we trust you know how to get packages as you need them. :)
 
 
 ### Non-Local Alternative: EWS Labs
