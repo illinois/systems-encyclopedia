@@ -29,7 +29,7 @@ In lecture, you'll see me use Visual Studio Code for all programming.  I recomme
 
 ## C Programming Environment
 
-Setting up an programming environment for C will depend on what operating system you are using and this page has a section for Windows, OS X, and Linux.  
+Setting up an programming environment for C will depend on what operating system you are using and this page has a section for Windows, OS X, and Linux.  Almost all C++ compiles can also compile C code, so most setup guides will be in the context of C++ even though you will be doing C in the MPs.
 
 
 ### Windows
@@ -60,31 +60,29 @@ Finally, create a `cs340` directory inside of your Ubuntu home directory.
 
 ### Mac OS X
 
-⚠️ OSX is a Unix-like operating system, but is not Linux.  As a systems course, there will be times that you will encounter unexpected behavior and will have to find workarounds.  Where possible, we will support OSX as best as possible.
+Since OS X is a Unix-like operating system, you will be able to run **most** Linux tools directly.  However, since it's not Linux, there will be times that you will encounter unexpected behavior and will have to find workarounds.  Where possible, we will support OSX as best as possible but it will not be perfect.
 
-To develop on MacOS, you'll need the following prerequisites:
-- [XCode Command Line Tools](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-- [The Homebrew package manager](https://docs.brew.sh/Installation), or other package manager to install software
+- [Follow Microsoft's Guide to Visual Studio Code on macOS for C++](https://code.visualstudio.com/docs/cpp/config-clang-mac)
 
 
-Finally, create a `cs340` directory on your Desktop.
+You will also need to create a `cs340` folder.  You can create it on your Desktop:
 
-- Open Ubuntu in the same way as you did in Microsoft's Guide.
 - Create your CS 340 directory:
     <pre class="language-bash"><code class="language-bash"><span style="color: #16c60c">waf@my-mac</span>:<span style="color: #3b78ff">~</span>$ cd Desktop           <span style="color: #42c26b"># Navigate to your Desktop</span><br><span style="color: #16c60c">waf@my-mac</span>:<span style="color: #3b78ff">~/Desktop</span>$ mkdir cs340  <span style="color: #42c26b"># Create the cs340 directory</span><br><span style="color: #16c60c">waf@my-mac</span>:<span style="color: #3b78ff">~/Desktop</span>$ cd cs340<span style="color: #42c26b">     # Navigate into the cs340 directory</span><br><span style="color: #16c60c">waf@my-mac</span>:<span style="color: #3b78ff">~/Desktop/cs340</span>$</code><span style="color: #42c26b">        # When your prompt shows cs340, you're inside of the cs340 directory!</span></pre>
 - You will use this directory for all your CS 340 work.  You will also find this folder as a visual folder on your desktop.
 
 
-
-
 ### Linux
 
-On Linux, setting up your environment should be as simple as installing the required packages for C development on your distribution. If you're running Linux, we trust you know how to get packages as you need them. :)
+On Linux, setting up your environment should be as simple as installing the required packages for C development on your distribution.   Microsoft has a guide to help you out if you out with getting Visual Studio Code set up:
+
+- [Follow Microsoft's Guide to "Using C++ on Linux in VS Code"](https://code.visualstudio.com/docs/cpp/config-linux)
 
 
+<!--
 ### Non-Local Alternative: EWS Labs
 
 If for any reason you are unable to or do not want to develop on your local machine, you may work remotely on an EWS machine. EWS will provide a limited Linux development environment which is already set up with most of the tools needed for this course. For more information, see the EngrIT guide here: [https://answers.uillinois.edu/illinois.engineering/page.php?id=81727](https://answers.uillinois.edu/illinois.engineering/page.php?id=81727).
 
 Note: Running on EWS requires you to run `module load gcc` each time you log in to ensure you have a recent version of the compiler in use.
-
+-->
