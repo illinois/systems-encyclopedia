@@ -10,7 +10,7 @@ authors:
 
 # The C Programming Language - An Introduction
 
-C is a general purpose low-level programming language developed in 1972 by Dennis Ritchie at Bell Labs. Since its inception, C has had a long history as the *de facto* systems programming language, being a mainstay in operating systems and embedded systems code, and to this day is a widely used in a variety modern low-level tech stacks. Outside of its speed and close mapping to machine and assembly code, C is an enticing language for systems programmers because it provides a simple, barebones set of language features that emphaseizes a "do it yourself" style of programming that gives programmers the ability to modify any and all parts o f their pgoram.
+C is a general purpose low-level programming language developed in 1972 by Dennis Ritchie at Bell Labs. Since its inception, C has had a long history as the *de facto* systems programming language, being a mainstay in operating systems and embedded systems code. To this day, C is a widely used in a variety of modern low-level tech stacks. Outside of its speed and close mapping to machine and assembly code, C is an enticing language for systems programmers because it provides a simple, barebones set of language features that emphaseizes a "do it yourself" style of programming that gives programmers control over all parts of their programs.
 
 C features a bracketed syntax that is similar in character to other general purpose programming languages like Java and Rust. A simple "Hello World" program is provided below as a canonical example:
 
@@ -23,12 +23,12 @@ int main() {
 }
 ```
 
-For many programmers, C is a difficult language to learn because of its barebones set of how stripped back it is. Therefore, there are a couple of things worth making note of in C for programmers unfamiliar with low-level languages:
+For many programmers, C is a difficult language to learn because of how barebones it is. Therefore, there are a couple of things worth making note of in C for programmers unfamiliar with low-level languages:
 
 - C gives programmers free reign to do whatever they like when it comes to managing program memory. In many ways this is a great strength of the language, but manual memory management can be difficult and cumbersome, and lead to some nasty side effects. For an introduction to memory management, see our "[Memory Management in C](../c-memory-management)" article.
-- The C standard library implements a very small set of data structures itself. Simple data structures like linked lists, stacks, queues, and must all be reimplemented in order to be used.
-- C does not define an explicit string type. Instead, every string is represented as an array of characters that is terminated with a null chracter (`\0` or `NUL`). In practical terms, this means that manipulating strings in C can be more involved than in other languages since there is no higher-level interface. For more information on this, see our article on [strings in C](../c-strings).
-- C does not have native support for object-oriented programming. While C does allow for user-defined types (`typedef`) and composite data types (`struct`), it does not allow object-oriented programming.
+- The C standard library implements a very small set of data structures itself. Data structures like linked lists, stacks, queues, and hashmaps must all be implemented yourself in order to be used.
+- C does not define an explicit string type. Instead, every string is represented as an array of characters that is terminated with a null chracter (`\0` or `NUL`). In practical terms, this means that manipulating strings in C can be more involved than in other languages given the lack of  higher-level interface. For more information on this, see our article on [strings in C](../c-strings).
+- C does not have native support for object-oriented programming, only providing an interface for C does for user-defined types (`typedef`) and composite data types (`struct`).
 
 ## Compiling and running C programs
 
