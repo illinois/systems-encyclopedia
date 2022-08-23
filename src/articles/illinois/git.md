@@ -60,7 +60,7 @@ main ol > li {
 
 4. **Connect the release repository**, which is where initial code will be provided for you as part of CS 340:
 
-    <pre class="language-bash"><code class="language-bash">git remote add release https://github.com/cs240-illinois/fa22_cs240_.release</code></pre>
+    <pre class="language-bash"><code class="language-bash">git remote add release https://github.com/cs340-illinois/fa22_cs340_.release</code></pre>
     
    - **If you get ANY OUTPUT AT ALL, it was NOT successful**.  *(No output means no error! :))* 
    - `git` error messages are very good!  Carefully and completely read the error message to help you out.
