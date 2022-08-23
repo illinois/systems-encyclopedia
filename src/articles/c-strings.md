@@ -10,7 +10,9 @@ authors:
 
 # Strings in C
 
-Unlike many higher-level programming languages, C does not feature an explicit string type. While C does allow string literals, strings in C are represented as character arrays terminated with a null byte (`\0` or `NUL`).
+Unlike many higher-level programming languages, C does not feature an explicit string type. While C does allow string literals, strings in C are strictly represented as character arrays terminated with a null byte (`\0` or `NUL`).
+
+In C, strings are a <u>special case</u> of character arrays; not all character arrays are considered strings, but any contiguous and null-terminated buffer of characters is guaranteed to behave like a string.
 
 We can declare and initialize strings a few ways:
 
@@ -27,15 +29,13 @@ strcpy(s4, "CS@UIUC");
 char* s5 = strdup("CS@UIUC"); // Same as using malloc and strcpy
 ```
 
-Regardless of the form that the initialization of our string takes, the way that our string is represented in memory (irrespective of where that memory is located) will look like this:
+Regardless of how our string is initialized, the way that our string is represented in memory will look like this:
 
 ![image](../static/c-strings/stringdiagram.png)
 
-It's also important to note that strings are a <u>special case</u> of character arrays; not all character arrays are guaranteed to be strings, but any contiguous and null-terminated sequence of characters is guaranteed to behave like a string in C.
-
 <hr class="solid">
 
-## Some Important String `stdlib` Functions
+## Some important string `stdlib` functions
 
 The C standard library implements a number of functions for operations on strings in `string.h`. Here, we'll give a brief overview of the most important functions.
 
@@ -170,11 +170,11 @@ char *strtok(char *restrict s, const char *restrict delim);
 char *strtok_r(char *str, const char *delim, char **saveptr);
 ```
 
-`strtok` and `strtok_r` are C's string tokenization functions. These are significantly more elaborate in specification and implementation than the rest of the functions mentioned here, so we've made a separate article covering how they work. You can find the article [here].
+`strtok` and `strtok_r` are C's string tokenization functions. These are significantly more elaborate in specification and implementation than the rest of the functions mentioned here, so we've made a separate article covering how they work. You can find the article [here](../c-strtok).
 
 <hr class="solid"> 
 
-## Common Pitfalls
+## Common pitfalls
 
 ### Forgetting the `NUL` byte
 
@@ -218,7 +218,7 @@ The memory model for this allocated string will look like this:
 
 ![img](../static/c-strings/overflowdiagram.png)
 
-Obviously, we've written past the bounds of our string! The practical effect of a buffer overflow is that we can overwrite other data that is sits adjacent in memory to our string. This is the basis of a **buffer overflow attack**, which is a possible vector to attack a certain program maliciously. You can read more about buffer overflow attacks [here].
+Obviously, we've written past the bounds of our string! The practical effect of a buffer overflow is that we can overwrite other data that is sits adjacent in memory to our string. This is the basis of a **buffer overflow attack**, which is a possible vector to attack a certain program maliciously. You can read more about buffer overflow attacks [here](buffer-overflows).
 
 <hr class="solid">
 
@@ -253,8 +253,8 @@ As a rule of thumb, fixed-size modifiable strings should usually be initialized 
 ## Further Reading
 
 From the Systems Encyclopedia:
-- [Buffer Overflow Attacks]
-- [How to Use `strtok` and `strtok_r` in C]
+- [Buffer Overflow Attacks](../buffer-overflows)
+- [How to Use `strtok` and `strtok_r` in C](../c-strtok)
 
-Outside reading:
+Outside readings:
 - [string(3)](https://man7.org/linux/man-pages/man3/string.3.html) - Linux manual page

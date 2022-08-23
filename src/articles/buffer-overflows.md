@@ -43,7 +43,7 @@ Specifically, there are two notable ways that the buffer overflow can be exploit
 
 For now, we will discuss buffer overflow attacks on the stack. We will also assume that the theoretical host machine that is being attacked has an x86 architecture and is using Linux as its operating system.
 
-### Techniques for exploiting buffer overflows
+### Example of a program that causes a buffer overflow
 
 Let's consider the following vulnerable C that contains a buffer overflow in its `aux` function:
 

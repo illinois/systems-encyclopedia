@@ -65,7 +65,7 @@ The maintainence of this internal pointer has several important implications for
 
 The main difference between `strtok` and `strtok_r` is that `strtok_r` contains an additional parameter called `saveptr` that behaves exactly the same as the internal static pointer of `strtok`. Like the static pointer in `strtok`, `saveptr` allows the function to preserve the context of what has and hasn't been tokenize, but parameterizing this part of the function allows for multiple contexts at the same time. Practically speaking, this is useful when we have data where we want to break tokens into their own sub-tokens.
 
-### Example: Tokenizing IPV4 Addresses
+### Example: Tokenizing IPV4 addresses
 
 Let's say we want to build a simple (and somewhat silly) program in C where divide a list of IPV4 addresses into a list of numbers that make up those addresses. We use `strtok_r` to make the following program:
 
@@ -111,7 +111,7 @@ Subtoken: 1
 
 Here, we're leveraging the fact that `strtok_r` allows multiple context by creating a pointer that handles each IPV4 address in the list and one that handles each number per IPV4 address. If we used just `strtok`, our pointer to our original list would reset after every call to `strtok` on `ips`! 
 
-## Common Pitfalls
+## Common pitfalls
 
 ### Using `strtok` vs. using `strtok_r`
 
@@ -163,4 +163,8 @@ The moment that `strtok` reaches the first space in `s`, it will immediately cau
 
 ## Further Reading
 
+From the Systems Encyclopedia:
+- [Strings in C](../c-strings)
+
+Outside readings:
 - [strtok(3)](https://man7.org/linux/man-pages/man3/strtok.3.html) - Linux manual page 

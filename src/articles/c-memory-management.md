@@ -19,7 +19,7 @@ The C runtime memory model can be broken down into 3 separate pieces:
 
 In reality, the way that C executables allocate memory is significantly more elaborate than this, but this is still a simple and accurate mental model that we can use to reason about how memory is managed.
 
-## Important `stdlib` Functions for Memory Management
+## Important `stdlib` functions for memory management
 
 C implements a number of functions in `stdlib.h` and `string.h` that are used to manipulate memory. With the exception of `memcpy`, `memmove` and `memset` (which are all located in `string.h`), all the functions mentioned here are located in the `stdlib.h` library.
 
@@ -200,7 +200,7 @@ c = NULL; // Defensive programming!
 
 <hr class="solid">
 
-## Further Reading
+## Further reading
 
-Outside reading:
+Outside readings:
 - The GNU C Library - [Memory Allocation and C](https://www.gnu.org/software/libc/manual/html_node/Memory-Allocation-and-C.html)

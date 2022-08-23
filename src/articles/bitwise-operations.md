@@ -12,7 +12,7 @@ authors:
 
 Bitwise operations are a set of operations on binary strings (also known as bit strings) that will evaluate and manipulate individual bits of their inputs sequentially. These operators are implemented in most high level programming languages and CPU instruction set architectures, having a wide range of use cases and being incredibly important for manipulating data at the bit level. Here, we will cover the most notable bitwise operators, explaining how they work and their applications.
 
-## Important Bitwise Operators
+## Important bitwise operators
 
 ### AND
 
@@ -179,9 +179,9 @@ let calculate_bitwise_op = () => {
   <tr>
     <td style="text-align: right; padding-right: 10px;">Operation:</td>
     <td>
-      <input type="radio" name="operation" id="operation_AND" value="AND" checked onchange="calculate_bitwise_op();"></td><label for="operation_AND" style="padding-right: 20px">AND</label>
-      <input type="radio" name="operation" id="operation_OR" value="OR" onchange="calculate_bitwise_op();"></td><label for="operation_OR" style="padding-right: 20px">OR</label>
-      <input type="radio" name="operation" id="operation_XOR" value="XOR" onchange="calculate_bitwise_op();"></td><label for="operation_XOR" style="padding-right: 20px">XOR</label>
+      <td><input type="radio" name="operation" id="operation_AND" value="AND" checked onchange="calculate_bitwise_op();"><label for="operation_AND" style="padding-right: 20px">AND</label>
+      <td><input type="radio" name="operation" id="operation_OR" value="OR" onchange="calculate_bitwise_op();"><label for="operation_OR" style="padding-right: 20px">OR</label>
+      <td><input type="radio" name="operation" id="operation_XOR" value="XOR" onchange="calculate_bitwise_op();"><label for="operation_XOR" style="padding-right: 20px">XOR</label>
     </td>
   </tr>
   <tr>
@@ -193,7 +193,7 @@ let calculate_bitwise_op = () => {
   </tr>
 </table>
 
-## Applications of Bitwise Operations
+## Applications of bitwise operations
 
 ### Operations on bit-based data structures
 
