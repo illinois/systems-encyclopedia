@@ -1,0 +1,48 @@
+name: mp0 autograding
+'on':
+  workflow_dispatch: {}
+jobs:
+  autograding:
+    name: autograding
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+    - name: Checkout release repository
+      id: sr-checkout
+      uses: actions/checkout@v2
+    - name: Checkout release repository
+      id: release-checkout
+      uses: actions/checkout@v2
+      with:
+        repository: cs340-illinois/fa22_cs340_.release
+        ref: mp0
+        path: release
+    - name: Copy local files from release
+      id: local-copy
+      uses: illinois/local-copy@v1
+      with:
+        src_path: release/mp0
+        dst_path: mp0
+        copy: '.github/classroom : .github/classroom, Makefile : Makefile, tests : tests'
+    - name: Verify student submission
+      id: verify-policy
+      uses: illinois/verify-policy@v1
+      with:
+        reference_files: 'release/mp0/.github/classroom : mp0/.github/classroom, release/mp0/Makefile : mp0/Makefile, release/mp0/tests : mp0/tests'
+    - name: Autograding
+      id: autograding
+      uses: wadefagen/autograding@v2
+      with:
+        path: mp0/
+        test_suite: autograding
+        step_summary: true
+    - name: Generate workflow summary
+      if: ${{ always() }}
+      run: echo -e "$(sh ./.github/scripts/gen-status-report.sh)" >> $GITHUB_STEP_SUMMARY
+      env:
+        sr_checkout_status: ${{ steps.sr-checkout.outcome }}
+        release_checkout_status: ${{ steps.release-checkout.outcome }}
+        local_copy_status: ${{ steps.local-copy.outcome }}
+        verify_policy_status: ${{ steps.verify-policy.outcome }}
+        autograding_status: ${{ steps.autograding.outcome }}
+        points: ${{ steps.autograding.outputs.Points }}

@@ -1,0 +1,9 @@
+*.o
+tests/*.o
+
+# MP-specific
+main
+test
+
+# Test
+tests/tay-small-illinify.gif

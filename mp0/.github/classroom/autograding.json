@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "Verify Illinify GIF",
+      "setup": "make test",
+      "run": "./test -w NoTests 'Verify Illinify GIF'",
+      "comparison": "included",
+      "timeout": 0.5,
+      "points": 30
+    }
+  ]
+}
