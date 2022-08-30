@@ -1,20 +1,18 @@
 ---
 title: Bitwise Operations
 
+date: 2022-08-30
+
 authors:
 - kennel2
 - waf
 ---
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css" integrity="sha512-bd1K4DEquIavX49RSZHIE0Ye6RFOVlGLhtGow9KDbLYqOd/ufhshkP0GoJoVR1jqj7FmOffvVIKuq1tcXlN9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 # Bitwise Operations
 
 Bitwise operations are a set of operations on binary strings (also known as bit strings) that will evaluate and manipulate individual bits of their inputs sequentially. These operators are implemented in most high level programming languages and CPU instruction set architectures, having a wide range of use cases and being incredibly important for manipulating data at the bit level. Here, we will cover the most notable bitwise operators, explaining how they work and their applications.
 
-## Important bitwise operators
-
-### AND
+## Bitwide AND
 
 Provided two equal length bit strings, the bitwise `AND` will perform the logical `AND` on each bit in the bit strings. For each bit position, if both binary strings contain a `1` in that position, `AND` will return a `1`. Otherwise, `AND` returns `0` in that position.
 
@@ -31,7 +29,8 @@ print(bin(a & b))
 0b100
 {% endoutput %}
 
-### OR
+
+## Bitwide OR
 
 Bitwise `OR` will perform logical `OR` on each bit, returning `1` if there is a `1` in either input for each bit position, returning `0` otherwise.
 
@@ -48,7 +47,8 @@ print(bin(a | b))
 0b110
 {% endoutput %}
 
-### XOR
+
+## Bitwide XOR
 
 `XOR` will perform a logical `XOR` on each bit, returning `1` if one and only one input contains a `1` in a position, returning `0` otherwise.
 
@@ -65,7 +65,8 @@ print(bin(a ^ b))
 0b10
 {% endoutput %}
 
-### NOT
+
+## Bitwise NOT
 
 Given a single input bitstring, bitwise `NOT` will invert every single bit in the bit string, flipping each `1` to a `0` and vice versa.
 
@@ -81,7 +82,8 @@ print(bin(~a))
 0b011
 {% endoutput %}
 
-### Bit shifting
+
+## Bit shifting
 
 Most programming languages implement two operators for performing bit shifts. Given a bit string and a number `n`, the left bit shift `<<` will shift a bitstring `n` bits to the left. If the appending a `0` byte in the least significant (leftmost) position each shift. For programming languages where the underlying data type of the bit string has a fixed byte length, a left bit shift will discard the most significant (right most) bit in the string. The following example is a bit shift executed on an unsigned 4 bit number.
 

@@ -1,6 +1,8 @@
 ---
 title: The C Programming Language - An Introduction
 
+date: 2022-08-30
+
 authors:
 - kennel2
 - waf
@@ -67,7 +69,6 @@ From the Systems Encyclopedia:
 
 - [Strings in C](../c-strings)
 - [Memory Management in C](../c-memory-management)
-- [File I/O in C](../c-fileio)
 
 Outside readings:
 

@@ -1,6 +1,8 @@
 ---
 title: Basic Memory Management in C
 
+date: 2022-08-30
+
 authors:
 - kennel2
 - waf

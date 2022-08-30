@@ -88,7 +88,7 @@ Write anything (including emojis!) into this text box and we'll display the ASCI
  </div>
 
  
-
+<!--
 
 
 
@@ -147,3 +147,5 @@ The full code page for ASCII is reproduced below:
     <td><abbr title="0x0f, Shift In">SI</abbr></td>
   </tr>
 </table>
+
+-->
