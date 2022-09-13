@@ -1,6 +1,8 @@
 ---
 title: Buffer Overflow Attacks
 
+date: 2022-09-13
+
 authors:
 - kennel2
 - waf

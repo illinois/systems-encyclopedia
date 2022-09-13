@@ -1,6 +1,8 @@
 ---
 title: File I/O in C
 
+date: 2022-09-13
+
 authors:
 - kennel2
 - waf
