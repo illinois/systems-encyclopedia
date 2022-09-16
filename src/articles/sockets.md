@@ -1,3 +1,15 @@
+---
+title: Sockets
+
+date: 2022-09-16
+
+authors:
+- kennel2
+---
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css" integrity="sha512-bd1K4DEquIavX49RSZHIE0Ye6RFOVlGLhtGow9KDbLYqOd/ufhshkP0GoJoVR1jqj7FmOffvVIKuq1tcXlN9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 # Sockets
 
 Sockets are a form of [inter-process communication](../ipc) that use byte streams in order to communicate between processes. Unlike other forms of IPC, sockets are unique in that they can be used to communicate between process on different machines over a network, making sockets fundamental to the foundations of computer networking. Here, we will give a practical overview of sockets for networking over Unix-like systems, and provide a brief demonstration of how to use sockets in C.
@@ -6,7 +18,7 @@ Sockets are a form of [inter-process communication](../ipc) that use byte stream
 
 Like [pipes](../pipes), sockets are implemented as [streams](https://en.wikipedia.org/wiki/Stream_(computing)) of bytes. In fact, sockets *can* be used in a basically equivalent fashion to pipes, communicating between two local processes on a machine in an unstructured, in-order manner. That said, sockets are unique from pipes in that they are used for cross-network communication, which is governed by a number of different protocols that control a number of important properties, making the behavior among different sockets much less uniform than pipes. Sockets can vary in the following ways:
 
-- **Data structure**: The way that data sent to and from the socket is structured. Data can either be structured into raw bytes, or **datagrams**, a basic unit of information that has a maximum length of `n` bytes.
+- **Data structure**: The way that data sent to and from the socket is structured. Data can either be structured into raw bytes, or [**datagrams**](https://en.wikipedia.org/wiki/Datagram), a basic unit of information that has a maximum length of `n` bytes.
 - **Connectivity**: Whether or not the socket requires two machines to first connect to each other in order to be able to send and receive data.
 - **Reliability**: Whether or not the data can be lost if there is a network error during packet transmission. Reliable data is always guaranteed to be received in full, whereas unreliable data can have pieces of information missing.
 - **Ordering**: Whether or not the data is required to be received in the exact same order that it is sent. For example, if the data `"abc"` is guaranteed to be ordered, it will always be received as `"abc"` and not `"cba"` or `"acb"`.
@@ -23,7 +35,7 @@ Given that sockets are more elaborate than pipes, there are multiple different P
 
 ### **`socket()`**
 
-```
+```c
 int socket(int domain, int type, int protocol);
 ```
 

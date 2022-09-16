@@ -1,3 +1,12 @@
+---
+title: Inter-process Communication
+
+date: 2022-09-16
+
+authors:
+- kennel2
+---
+
 <head>
 <style>
 .center-img {
