@@ -6,19 +6,19 @@
 
 ## Big-endianness
 
-In **big-endian** order, the most significant byte of a multi-byte piece of data is stored in the lowest allocated memory address, with the rest of the bytes stored in higher memory addresses by reverse order of significance. Let's consider the example of a four byte integer with a byte sequence of `0A,0B,0C,0D`; under a big-endian scheme, the integer would be stored in memory as follows[^1]:
+In **big-endian** order, the most significant byte of a multi-byte piece of data is stored in the lowest allocated memory address, with the rest of the bytes stored in higher memory addresses by reverse order of significance. Let's consider the example of a four byte integer with a byte sequence of `0A,0B,0C,0D`; under a big-endian scheme, the integer would be stored in memory as follows<sup>1</sup>:
 
 ![img](../static/endianness/bigendian.png)
 
-While many ISAs feature support for reading and addressing data in big-endian format (see bi-endianness below), the vast majority of modern ISAs are not exclusively big-endian or big-endian by default[^2].
+While many ISAs feature support for reading and addressing data in big-endian format (see bi-endianness below), the vast majority of modern ISAs are not exclusively big-endian or big-endian by default<sup>2</sup>.
 
 ## Little-endianness
 
-**Little-endian** order stores bytes in the reverse order from big-endian order, storing the least significant byte in the lowest possible memory address, with the remaining bytes stored in higher memory addresses by order of significance. Let's consider the same example of `0A,0B,0C,0D`, which would be stored in memory as follows[^1]:
+**Little-endian** order stores bytes in the reverse order from big-endian order, storing the least significant byte in the lowest possible memory address, with the remaining bytes stored in higher memory addresses by order of significance. Let's consider the same example of `0A,0B,0C,0D`, which would be stored in memory as follows<sup>1</sup>:
 
 ![img](../static/endianness/littleendian.png)
 
-Little-endian order is significantly more common in modern ISAs than big-endian, being used in the largest ISA families. Specifically, little-endian is used in x86 and is typically the default setting for ARM machines[^3].
+Little-endian order is significantly more common in modern ISAs than big-endian, being used in the largest ISA families. Specifically, little-endian is used in x86 and is typically the default setting for ARM machines<sup>3</sup>.
 
 ## Bi-endianness
 
@@ -66,9 +66,7 @@ Because not all networking devices feature the same byte order, many networking 
 C defines the `htonl` and `ntonl` functions for converting 32-bit data types from host to network byte order and vice versa. For big-endian machines, these functions will have no effect, as in C network byte order is implemented as being big-endian, but for little-endian systems the byte order of the input will be reversed.
 
 <hr class="solid">
+1: Image courtesy of R. S. Shaw via Wikimedia Commons, https://commons.wikimedia.org/w/index.php?curid=2974661
 
-[^1]: Image courtesy of R. S. Shaw via Wikimedia Commons, https://commons.wikimedia.org/w/index.php?curid=2974661
-[^2]: See [here](https://en.wikipedia.org/wiki/Comparison_of_instruction_set_architectures) for a comparison of endianness in different ISAs.
-[^3]: https://developer.arm.com/documentation/den0013/d/Porting/Endianness
-
-## Further Reading 
+2: See [here](https://en.wikipedia.org/wiki/Comparison_of_instruction_set_architectures) for a comparison of endianness in different ISAs.
+3: https://developer.arm.com/documentation/den0013/d/Porting/Endianness

@@ -34,9 +34,10 @@ mov     ebx, 10 ; put the value `10` into register ebx
 add     eax, ebx ; add the values that exist inside eax and ebx
 ```
 
-The structure of instructions in machine code is also analogous to machine code (which is why assembly is frequently used as an intermediate language). Consider MIPS32's `addi` instruction written in machine code as an example[^1]:
+The structure of instructions in machine code is also analogous to machine code (which is why assembly is frequently used as an intermediate language). Consider MIPS32's `addi` instruction written in machine code as an example<sup>1</sup>:
 
-![img](../static/isa/mips32instruction.png)
+<img src="../static/isa/mips32instruction.png" style="max-width: 100%;" />
+
 
 From both examples, we can gather a few things about what instructions do:
 - Instructions typically have very minimal functionalities -- mimicking a simple equivalent program in a high-level programming language already takes three times as many lines.
@@ -49,7 +50,7 @@ From both examples, we can gather a few things about what instructions do:
 
 <table style="text-align:center">
   <tr><th>RISC</th><th>CISC</th></tr>
-  <tr><td>Instructions are always 32 bits long, making [instruction pipelining](https://cs.stanford.edu/people/eroberts/courses/soco/projects/risc/pipelining/index.html) possible</td><td>Instructions are variable length</td></tr>
+  <tr><td>Instructions are always 32 bits long, making <a href="https://cs.stanford.edu/people/eroberts/courses/soco/projects/risc/pipelining/index.html">instruction pipelining</a> possible</td><td>Instructions are variable length</td></tr>
   <tr><td>Much longer and less readable assembly -- less instructions increases assembly code size</td><td>Large set of instructions leads to smaller and less complicated assembly code</td></tr>
   <tr><td>Higher upper bound on number of general purpose registers since less hardware space is dedicated to complex instructions</td><td>Lower upper bound on general-purpose registers</td></tr>
 </table>
@@ -64,4 +65,4 @@ For modern ISAs, the distinction between the RISC and CISC is often blurred, as 
 
 <hr format="solid">
 
-[^1]: Image courtesy of Chris-martin via Wikimedia Commons - http://en.wikipedia.org/wiki/Image:Mips32_addi.svg, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1362890
+1: Image courtesy of Chris-martin via Wikimedia Commons - http://en.wikipedia.org/wiki/Image:Mips32_addi.svg, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1362890
