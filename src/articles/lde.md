@@ -1,3 +1,14 @@
+---
+title: Limited Direct Execution
+
+date: 2022-09-20
+
+authors:
+- kennel2
+---
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css" integrity="sha512-bd1K4DEquIavX49RSZHIE0Ye6RFOVlGLhtGow9KDbLYqOd/ufhshkP0GoJoVR1jqj7FmOffvVIKuq1tcXlN9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 # Limited Direct Execution
 
 **Limited direct execution** (LDE) is set of techniques implemented by modern operating systems and computer processors that restricts the privileges of running processes to maintain system security and ensure fault tolerance. Here, we will discuss why operating systems use limited direct execution, how it is implemented, and the consequences of having a system of LDE.
@@ -13,7 +24,7 @@ The easiest way thinking about the problem is to develop a system of **direct ex
 However, you might notice that the direct execution model creates some significant issues:
 
 1. Under a direct execution model, any process that runs on our machine is never forced to give CPU control back to the operating system at any point. This means that a program that runs forever effectively takes control of a machine, since the operating system has no way to get control of the CPU back. 
-2. We do not necessarily want to give full CPU control to every process that runs on the machine. For example, if any process could disable interrupts whenever it wanted. 
+2. We do not necessarily want to give full CPU control to every process that runs on the machine. For example, we don't want any process to disable interrupts whenever it wants. 
 
 Given the fact that any indivivudal process can essentially seize control of the entire system as it pleases under a direct execution model, it is clear that there is a good motivation for OS developers to rein them in. 
 
