@@ -41,7 +41,7 @@ We recommend that you also download the docker vscode extension. This will show 
 
 ## Why Do I Need to Do This When My Windows/Linux Friends Don't Need Docker
 The most important problem with M1 macs is that valgrind is currently [not supported](https://valgrind.org/info/platforms.html) (as of 09/2022). As we require memory correctness in our MP's, valgrind is a necessity. 
-Even if you don't use valgrind, you will find that low-level systems programming on the M1 natively will provide you with many annoyances. Apple is increasingly very concerned about the [security](https://www.dictionary.com/browse/control) of its users. Thus trying to do some semi-sketchy low level stuff like sideloading an unsigned by apple malloc implementation in MP3 may give you problems.
+Even if you don't use valgrind, you will find that low-level systems programming on the M1 natively will provide you with many annoyances. Apple is increasingly very concerned about the [security](https://www.dictionary.com/browse/control) of its users. Thus trying to do some semi-sketchy low level tasks like sideloading an unsigned by apple malloc implementation in MP3 may give you problems.
 
 ## What do these commands do
 Like good systems programmers, we never just run terminal commands without actually knowing what they do. Docker's [website](https://docs.docker.com/) has good documentation. 
@@ -79,7 +79,7 @@ To install stuff inside the image so that every container will have packages the
 
 COPY in the Dockerfile copies files or directories from local to the docker container. 
 
-ENTRYPOINT is a command that runs whenever we start a container (instance) of the container. In our example it is a bash script that we copy into the the root directory of the docker image. We also make sure to change the [permission](https://linuxpip.org/chmod-x-explained-everything-you-need-to-know/) using chmod +x, to allow the docker containers to execute the bash scrpt.
+ENTRYPOINT is a command that runs whenever we start a container. In our example it is a bash script that we copy into the the root directory of the docker image. We also make sure to change the [permission](https://linuxpip.org/chmod-x-explained-everything-you-need-to-know/) using chmod +x, to allow the docker containers to execute the bash scrpt.
 
 In our case the entrypoint script only changes the folder to mp2 and prints out a process is running.
 ```text
@@ -109,4 +109,4 @@ The -v flag performs a bind mount from the docker container to the local. That w
 
 cs340 is the image name.
 
-The command is then run. MAKE SURE TO USE QUOTES AROUND THE COMMAND!!!!! Otherwise it will be confused that there are multiple different flags it doesn't recognize.
+The command is then run. MAKE SURE TO USE QUOTES AROUND THE ENTIRE COMMAND!!!!! Otherwise it will be confused that there are multiple different flags it doesn't recognize.
