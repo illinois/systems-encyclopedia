@@ -1,7 +1,8 @@
 ---
 title: Assembly
 
-date: 2022-09-16
+date: 2022-11-30
+eleventyExcludeFromCollections: true
 
 authors:
 - kennel2

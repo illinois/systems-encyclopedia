@@ -1,3 +1,13 @@
+---
+title: Virtual Memory
+
+date: 2022-11-30
+eleventyExcludeFromCollections: true
+
+authors:
+- kennel2
+---
+
 # Virtual Memory
 
 **Virtual memory** is a technique employed by modern operating systems to abstract away physical memory from running processes, and allow processes to use auxiliary memory whenever main memory runs out. Here, we'll discuss how virtual works and why operating systems implement virtual memory.

@@ -1,7 +1,8 @@
 ---
 title: Memory Paging
 
-date: 2022-09-20
+date: 2022-11-30
+eleventyExcludeFromCollections: true
 
 authors:
 - kennel2
