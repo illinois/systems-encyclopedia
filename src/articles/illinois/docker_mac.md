@@ -1,5 +1,5 @@
 ---
-title: Setting Up Your Programming Environment for CS 340
+title: CS 340 Docker Setup Guide for M1 MAC
 
 date: 2022-09-27
 
@@ -14,7 +14,7 @@ main ul > li:last-of-type { margin-bottom: 30px; }
 h3 { margin-top: 30px; }
 </style>
 
-# Docker Setup Guide for Mac
+# CS 340 Docker Setup Guide for M1 MAC
 
 To do our C MPs on M1 macs, we highly recommend using docker. Here are the commands you need to run.
 
