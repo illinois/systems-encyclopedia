@@ -1,6 +1,5 @@
 ---
-title: The C Programming Language - An Introduction
-
+title: MongoDB CRUD Operations
 date: 2022-09-09
 
 authors:
