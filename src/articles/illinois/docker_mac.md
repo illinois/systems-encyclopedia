@@ -16,7 +16,7 @@ h3 { margin-top: 30px; }
 
 # Docker Setup Guide for Mac
 
-To do many of our MPs on M1 macs, we hihgly recommend using docker. Here are the commands you need to run.
+To do our C MPs on M1 macs, we highly recommend using docker. Here are the commands you need to run.
 
 Note: You NEED to start the docker desktop app first for this to work.
 
@@ -93,7 +93,7 @@ $1
 ### Running Container
 
 Once we have the template that the image provides, we are able to start instances of those images known as containers.
-Containers (in our case), are designed for one time use. They are also operating on your local file system (in our case), because we mount the docker container to your local file system. Thus you can think of it like running commands on your own filesystem, just using a different operating system.
+Containers (in our case), are designed for one time use. They are also operating on your local file system (in our case), because we mount the docker container to your local file system (using -v flag). Thus you can think of it like running commands on your own filesystem, just using a different operating system.
 
 For example
 
@@ -105,7 +105,7 @@ The --rm flag is used so that the container is removed when it is stopped. Other
 
 The -it flag starts the container in interactive mode. This allows you to make commands while the docker container is running.
 
-The -v flag performs a bind mount from the docker container to the local. That way your docker container is working on a mounted version of your file system. If we didn't include this or some other mechanism of changing the local files, you files would be gone after the docker container is closed.
+The -v flag performs a bind mount from the docker container to the local. That way your docker container is working on your local file system. If we didn't include this or some other mechanism of changing the local files, you files would be gone after the docker container is closed.
 
 cs340 is the image name.
 
