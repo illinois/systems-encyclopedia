@@ -13,6 +13,12 @@ authors:
 
 Making HTTP requests is a core concept of networking, and Flask provides a built-in way to retrieve and post data to the browser. 
 
+The requests library can be imported for use via
+
+```python
+from flask import Flask, request
+```
+
 In order to use the requests library, the type of request must be specified in the route, for example 
 
 ```python
@@ -28,42 +34,60 @@ def login():
 
 ```
 
-The minimal Flask python file above is an example of user-defined routes.
+The route above represents a POST request made through a form on the browser, where the data can be automatically accessed. 
 
-1. The first line imports the flask class for Python.
-2. Next, an instance of this flask class is created and stores it in the variable "app."
-   **name** is a shorthand directive so Flask can locate Flask templates.
-3. The route() function gives Flask a direction to use a route.
-4. The function hello_world renders the message 'Hello World' to the browser when the '\' is retreived via a user GET request.
-
-## Compiling and running Flask microservices
+Data posted can also be accessed via JSON. 
 
 ```python
-pip install Flask
+@app.route('/courseTime', methods='POST')
+def login():
+    request.json()
+    course_time = request['course']
+    return course_time  
+
 ```
 
-To run the Flask application,
+More than one request can also be handled at once. For example, one can respond differently to a GET and POST request. 
 
-```python
-python -m flask run
+```python 
+from flask import request
+
+@app.route('/', methods=['GET', 'POST'])
+def parse_request():
+    if request.method == 'POST'
+      data = request.data 
+      # modify the data based on what is inputted
+    return render_template('index.html')
 ```
 
-This command will run on a local browser.
-To run it on an externally visible port with public IP's, use
+The attributes available on the request object (from the requests library) can involve unique ways of accessing the request body. 
 
-```python
-flask run --host=0.0.0.0
-```
+## request.data 
+Contains the incoming request data as string in case it came with a mimetype Flask does not handle.
 
-To run with specific flags, the flags can be added to the run command. A useful flag for developing is
+## request.args
+the key/value pairs in the URL query string
 
-```python
-python --app {app name} --debug run
-```
+## request.form
+the key/value pairs in the body, from a HTML post form, or JavaScript request that isn't JSON encoded
+
+
+## request.files
+the files in the body, which Flask keeps separate from form. HTML forms must use enctype=multipart/form-data or files will not be uploaded.
+
+## request.values
+combined args and form, preferring args if keys overlap
+
+## request.json
+parsed JSON data. The request must have the application/json content type, or use request.get_json(force=True) to ignore the content type.
+All of these are MultiDict instances (except for json). You can access values using:
+
+request.form['name']: use indexing if you know the key exists
+request.form.get('name'): use get if the key might not exist
+request.form.getlist('name'): use getlist if the key is sent multiple times and you want a list of values and only returns the first value.
 
 ## Further Reading
 
-Flask documentation is very organized:
-https://flask.palletsprojects.com/en/2.2.x/quickstart/
+Request library documentation: https://tedboy.github.io/flask/generated/generated/flask.Request.html
 
-The next articles will delve on tutorials on how to implement useful functionality in Flask.
+

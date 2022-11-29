@@ -37,6 +37,16 @@ The minimal Flask python file above is an example of user-defined routes.
 3. The route() function gives Flask a direction to use a route.
 4. The function hello_world renders the message 'Hello World' to the browser when the '\' is retreived via a user GET request.
 
+User-specified paramters can also be extracted from the route. 
+
+```python
+@app.route('/hello/<id>')
+def hello_with_id(id):
+  return f"hello {id}!"
+```
+
+
+
 ## Compiling and running Flask microservices
 
 ```python
