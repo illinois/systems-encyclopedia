@@ -23,6 +23,10 @@ printf("%c\n", codePoint);
 
 // Printing an entire word using only code points:
 printf("%c%c%c%c%c%c%c%c\n", 73, 108, 108, 105, 110, 11, 105, 115);
+
+// Get the code point of a character
+char c = 'h';
+codePoint = (int) c;
 ```
 {% output %}
 A
@@ -88,11 +92,6 @@ Write anything (including emojis!) into this text box and we'll display the ASCI
  </div>
 
  
-<!--
-
-
-
-
 ## ASCII Encoding
 
 The <abbr title="American Standard Code for Information Interchange">ASCII</abbr> character encoding was one of the earliest widely adopted character encodings (first published in 1963, and updated as recently as 2017).  The ASCII code page includes all of the keys found on a standard US keyboard along side 33 control characters to denote items like a new line (ASCII code point `10`), backspace (ASCII code point `8`), and NULL (ASCII code point `0`).
@@ -148,4 +147,21 @@ The full code page for ASCII is reproduced below:
   </tr>
 </table>
 
--->
+## Unicode
+
+Unicode is a character set designed for backwards compatability with ASCII. It was created to standardize character encodings for many different languages.
+
+UTF-8 is a variable-legth encoding scheme defined by the Unicode Standard which can support 1,112,064 character code points in Unicode using 1-4 byte code units.
+
+All ASCII characters are 1 byte long in UTF-8. 
+
+The first byte in a UTF-8 character indicates its size. For example, 2-byte characters are indicated by a prefix of "110" and 3-byte characters are indicated by a prefix of "1110" etc. Each following byte is lead by "10".
+
+- 1-byte (ASCII): 0...
+- 2-byte: 1100....
+- 3-byte: 1110....
+- 4-byte: 11110...
+
+For example, most emojis are 4-byte long. The emoji 🎉 has a unicode value of U+1F389. In UTF-8 encoding we get the bytes `0xF0 0x9F 0x8E 0x89`.
+
+
