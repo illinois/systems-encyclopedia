@@ -89,7 +89,8 @@ char *strncat(char *dest, const char *src, size_t n);
 Given two strings `src` and `dest`, `strcat` will concatenate `src` onto `dest`. `strcat` will also handle null bytes, removing the null byte of `dest` and adding a null byte to the end of the concatenated string.
 
 ```c
-char c[24] = strcat("I love ", "systems!");
+char c[24] = "I love ";
+strcat(c, "systems!");
 printf("%s", c);
 ```
 {% output %}
