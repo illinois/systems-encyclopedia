@@ -15,7 +15,7 @@ Flask is a lightweight Python server-side framework. It is known as a microframe
 
 A Flask application is a very minimal built-in server web service, involving custom routes. Server-side microservices are the core of how programmers interact with API's by retreiving routes and how API's can be created.
 
-![image](static/microservices/microservices.png)
+![image](../static/microservices/microservices.png)
 
 Combined with the ease of learning Python, Flask is a great starting point for programmers looking to build web services quickly from the ground-up.
 
@@ -32,10 +32,10 @@ def hello_world():
 The minimal Flask python file above is an example of user-defined routes.
 
 1. The first line imports the flask class for Python.
-2. Next, an instance of this flask class is created and stores it in the variable "app."
-   **name** is a shorthand directive so Flask can locate Flask templates.
+2. Next, an instance of this flask class is created and stores it in the variable "app".
+   **\_\_name\_\_** is a shorthand directive so Flask can locate Flask templates.
 3. The route() function gives Flask a direction to use a route.
-4. The function hello_world renders the message 'Hello World' to the browser when the '\' is retreived via a user GET request.
+4. The function hello_world renders the message 'Hello World' to the browser when the '\/\' is retreived via a user GET request.
 
 User-specified paramters can also be extracted from the route. 
 
