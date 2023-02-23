@@ -26,7 +26,7 @@ However, you might notice that the direct execution model creates some significa
 1. Under a direct execution model, any process that runs on our machine is never forced to give CPU control back to the operating system at any point. This means that a program that runs forever effectively takes control of a machine, since the operating system has no way to get control of the CPU back. 
 2. We do not necessarily want to give full CPU control to every process that runs on the machine. For example, we don't want any process to disable interrupts whenever it wants. 
 
-Given the fact that any indivivudal process can essentially seize control of the entire system as it pleases under a direct execution model, it is clear that there is a good motivation for OS developers to rein them in. 
+Given the fact that any individual process can essentially seize control of the entire system as it pleases under a direct execution model, it is clear that there is a good motivation for OS developers to rein them in. 
 
 ### How direct execution is "limited"
 
@@ -53,7 +53,7 @@ The x86 family of architectures defines a set of **protection rings**, which are
 
 <p><a href="https://commons.wikimedia.org/wiki/File:Priv_rings.svg#/media/File:Priv_rings.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Priv_rings.svg/1200px-Priv_rings.svg.png" class="center-img" width="50%" alt="Priv rings.svg"></a><br>By <a href="https://en.wikipedia.org/wiki/User:Hertzsprung" class="extiw" title="wikipedia:User:Hertzsprung">Hertzsprung</a> at <a href="https://en.wikipedia.org/wiki/" class="extiw" title="wikipedia:">English Wikipedia</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=8950144">Link</a></p>
 
-An important thing to note is that OS not required to use every single ring as defined by the architecture. In the case of x86, most operating systems do not use rings 1 and 2 and strictly separate permissions into two discrete modes called **kernel mode** and **user mode**, where kernel mode is analogous to ring 0, and user mode is analogous to ring 3.
+An important thing to note is that OS is not required to use every single ring as defined by the architecture. In the case of x86, most operating systems do not use rings 1 and 2 and strictly separate permissions into two discrete modes called **kernel mode** and **user mode**, where kernel mode is analogous to ring 0, and user mode is analogous to ring 3.
 
 ## Switching CPU modes with syscalls
 
