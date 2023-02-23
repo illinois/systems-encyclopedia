@@ -2,7 +2,7 @@
 title: System Virtual Machines
 
 date: 2022-11-29
-eleventyExcludeFromCollections: true
+# eleventyExcludeFromCollections: true
 
 authors:
 - shaffar3
@@ -25,9 +25,15 @@ There are many potential reasons to use VM’s:
 
 -  If there is a disaster (power outage, hack, etc.) it is easier to recreate the system. Modern VM software typically allows you to clone the system <sup>1</sup>. They are also less dependent on the hardware, and thus are more mobile. We can move an operating system from the downed server to a working server, and that system should work fine. This is much harder to do with a non-virtualized instance of an OS.
 
+- Virtual machines also provide a way to easily deploy and manage software applications. With virtualization, administrators can create a virtual machine image of a server or application and replicate it across multiple physical servers or cloud instances. This makes it easier to manage and scale applications in a consistent way, without having to configure each individual machine.
+
+- Virtual machines can provide a way to securely isolate different applications or services from each other, reducing the risk of interference or compromise. For example, a company might use virtual machines to separate its email server from its web server, or to create a sandboxed environment for testing potentially risky software.
+
+
+
 
 ### Great, What’s the Catch?
-As with most layers of abstraction added to software, as we add more barriers and abstractions from hardware, computers become less time efficient with lower performance. If we need or value tasks that are CPU intensive, or require fast performance, VM’s may not be the optimal option<sup>2</sup>. 
+Overall, virtual machines provide a powerful tool for managing and utilizing hardware resources efficiently, while also providing flexibility, scalability, and security. However, it is important to carefully consider the potential trade-offs between performance and convenience when deciding whether or not to use virtual machines in a given situation. As with most layers of abstraction added to software, as we add more barriers and abstractions from hardware, computers become less time efficient with lower performance. If we need or value tasks that are CPU intensive, or require fast performance, VM’s may not be the optimal option<sup>2</sup>. 
 Another potential problem is that the resource allocation is unpredictable. If two operating systems are running on the same hardware, [the amount of resources each user requests from the host hardware will vary throughout time](https://en.wikipedia.org/wiki/Temporal_isolation_among_virtual_machines).
 
 ## Hypervisor
@@ -69,5 +75,5 @@ This guide discuessed system virtual machines, but other virtualizations exist.
 <img src="../static/virtual-machines/docker.png"></img>
 
 Sources
-1: https://www.parallels.com/blogs/ras/benefits-virtual-machines/]
+1: https://www.parallels.com/blogs/ras/benefits-virtual-machines/
 2: https://cynexlink.com/latest-articles/virtual-machines-pros-cons/
