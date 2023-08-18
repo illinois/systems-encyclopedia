@@ -13,10 +13,10 @@ systems-encyclopedia static website, built using [11ty](https://www.11ty.dev/).
 ## How to get started
 
 ### 1. Clone the repository
-```git clone https://github.com/dsdiscovery/website DISCOVERY```
+```git clone https://github.com/illinois/systems-encyclopedia```
 
 ### 2. cd into project directory
-```cd DISCOVERY``
+```cd systems-encyclopedia```
 
 ### 3. Install dependencies
 ```npm install```
