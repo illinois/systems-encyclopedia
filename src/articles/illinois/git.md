@@ -2,7 +2,7 @@
 title: Setting Up git for CS 340
 
 date: 2022-08-16
-updated: 2022-08-16
+updated: 2024-01-18
 
 authors:
 - waf, gcevans
@@ -10,14 +10,15 @@ authors:
 
 # Setting Up git for CS 340
 
-`git` is the industry standard for source code repositories and GitHub is the most used implementation of `git`.  The University of Illinois has an enterprise license to github.com, giving us access to all the fancy features of enterprise GitHub!
+`git` is the industry standard for collaborative code management. GitHub is the most popular server for attaching git projects to. Among `git` and GitHub's many collaboration features are a few that will assist us in delivering and grading MPs.
 
+The University of Illinois has an enterprise license to [github.com](http://github.com) and has enabled some security features which will make connecting to it more secure but also more involved than other GitHub sites.
 
 ## Creating a GitHub Account
 
-To log into GitHub, you will use your own personal GitHub account (not your Illinois NetID).  You will be privately associating your NetID with your GitHub account to be invited into the `@cs340-illinois` course organization.
+To log into GitHub, you will use your own personal GitHub account (usually not your Illinois NetID, though it is possible you might be able to claim the same ID for github and for the university).  You will be privately associating your NetID with your GitHub account to be invited into the course organization for your course (e.g. `@cs340-illinois`).
 
-**If you do not have a GitHub account**, you need to create a free GitHub account.  Most people use their github.com as part of their professional identity, so choosing a professional username is encouraged (ex: `gcevans` is Carl's username, not `dy$t0pianUnIc0rN`).
+**If you do not have a GitHub account**, you need to create a free GitHub account.  Most people use their github.com as part of their professional identity, so choosing a professional username is encouraged (ex: `gcevans` is Carl Evan's username, not `dy$t0pianUnIc0rN`).
 
 - [Create your free github.com account on github.com](https://github.com/)
 
@@ -26,7 +27,7 @@ To log into GitHub, you will use your own personal GitHub account (not your Illi
 
 In CS 340, all of your work will be submitted in your personal, private repository in `@cs340-illinois` on GitHub.  We have developed a GitHub Repository Creator that will create a private repository for you in `@cs340-illinois` and set it up with the permissions so that course staff can also access you work.
 
-- Complete the GitHub Repository Tool **all the way until you have a CS 340 repository link**: [https://edu.cs.illinois.edu/create-gh-repo/fa23_cs340](https://edu.cs.illinois.edu/create-gh-repo/fa23_cs340)
+- Complete the GitHub Repository Tool **all the way until you have a CS 340 repository link**: [https://edu.cs.illinois.edu/create-gh-repo/fa23_cs340](https://edu.cs.illinois.edu/create-gh-repo/sp24_cs340)
 - You will need to use your repository link in the steps below (highlighted in yellow)
 
 
@@ -48,10 +49,12 @@ main ol > li {
 2. **Clone** a local copy of your git repository with the following command (making sure to replace `YOUR-GIT-REPO-URL` with the URL from the "Course Repository Tool" above):
 
    <pre class="language-bash"><code class="language-bash">git clone <span style="background-color: yellow; color: black;">&lt;YOUR-GIT-REPO-URL&gt;</span> <span style="background-color: lime; color: black;">&lt;NETID&gt;</span>
-   <span style="color: #42c26b"># Ex: git clone <span style="background-color: yellow; color: black;">https://github.com/cs340-illinois/fa23_cs340_gcevans</span> <span style="background-color: lime; color: black;">gcevans</span></span></code></pre>
+   <span style="color: #42c26b"># Ex with HTTPS: git clone <span style="background-color: yellow; color: black;">https://github.com/cs340-illinois/fa23_cs340_gcevans</span> <span style="background-color: lime; color: black;">gcevans</span></span></code></pre>
+   <span style="color: #42c26b"># Ex with SSH: git clone <span style="background-color: yellow; color: black;">git@github.com:cs340-illinois/fa23_cs340_gcevans.git</span> <span style="background-color: lime; color: black;">gcevans</span></span></code></pre>
 
    - **⚠️ You may get errors running this command and will need to set up your access to your GitHub.** 
    - `git` error messages are very good!  Often the error message will contain a URL where you github provides you the next steps (ex: generating a token, adding OAuth permissions, etc).  This command must be successful before you can continue.
+   - GitHub is continually changing how parts of their system work; we recommend avoiding anything marked "beta"
 
 3. Once you have a clone, **navigate** into your git directory by going into your NetID-named folder:
 
