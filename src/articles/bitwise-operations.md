@@ -12,7 +12,7 @@ authors:
 
 Bitwise operations are a set of operations on binary strings (also known as bit strings) that will evaluate and manipulate individual bits of their inputs sequentially. These operators are implemented in most high level programming languages and CPU instruction set architectures, having a wide range of use cases and being incredibly important for manipulating data at the bit level. Here, we will cover the most notable bitwise operators, explaining how they work and their applications.
 
-## Bitwide AND
+## Bitwise AND
 
 Provided two equal length bit strings, the bitwise `AND` will perform the logical `AND` on each bit in the bit strings. For each bit position, if both binary strings contain a `1` in that position, `AND` will return a `1`. Otherwise, `AND` returns `0` in that position.
 
@@ -30,7 +30,7 @@ print(bin(a & b))
 {% endoutput %}
 
 
-## Bitwide OR
+## Bitwise OR
 
 Bitwise `OR` will perform logical `OR` on each bit, returning `1` if there is a `1` in either input for each bit position, returning `0` otherwise.
 
@@ -48,7 +48,7 @@ print(bin(a | b))
 {% endoutput %}
 
 
-## Bitwide XOR
+## Bitwise XOR
 
 `XOR` will perform a logical `XOR` on each bit, returning `1` if one and only one input contains a `1` in a position, returning `0` otherwise.
 
